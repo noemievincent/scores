@@ -1,3 +1,3 @@
 # scores
 
-![statement](/Users/dominique/Desktop/scores/statement.png)
+![statement](statement.png)
