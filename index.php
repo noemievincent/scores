@@ -1,7 +1,7 @@
 <?php
 
 define('TODAY', (new DateTime('now', new DateTimeZone('Europe/Brussels')))->format('M jS, Y'));
-$filePath = 'matches.csv';
+define('FILE_PATH', 'matches.csv');
 $matches = [];
 $standings = [];
 $teams = [];
@@ -20,7 +20,7 @@ function getEmptyStatsArray()
     ];
 }
 
-$handle = fopen($filePath, 'r');
+$handle = fopen(FILE_PATH, 'r');
 $headers = fgetcsv($handle, 1000);
 
 while ($line = fgetcsv($handle, 1000)) {
@@ -68,5 +68,6 @@ uasort($standings, function ($a, $b) {
 });
 
 $teams = array_keys($standings);
+sort($teams);
 
 require('vue.php');
