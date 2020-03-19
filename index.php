@@ -1,17 +1,20 @@
 <?php
 
+use function Team\all as teamAll;
+
 require('./configs/config.php');
 require('./utils/dbaccess.php');
 require('./models/team.php');
+require('./models/match.php');
 
 $pdo = getConnection();
 
 define('TODAY', (new DateTime('now', new DateTimeZone('Europe/Brussels')))->format('M jS, Y'));
 define('FILE_PATH', 'matches.csv');
-$matches = [];
 $standings = [];
 
-$teams = all($pdo);
+$matches = [];
+$teams = teamAll($pdo);
 
 function getEmptyStatsArray()
 {
