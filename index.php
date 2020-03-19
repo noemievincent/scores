@@ -1,6 +1,8 @@
 <?php
 
-use function Team\all as teamAll;
+use function Match\allWithTeams as allMatchesWithTeams;
+use function Match\allWithTeamsGrouped as allMatchesWithTeamsGrouped;
+use function Team\all as allTeams;
 
 require('./configs/config.php');
 require('./utils/dbaccess.php');
@@ -13,8 +15,8 @@ define('TODAY', (new DateTime('now', new DateTimeZone('Europe/Brussels')))->form
 define('FILE_PATH', 'matches.csv');
 $standings = [];
 
-$matches = [];
-$teams = teamAll($pdo);
+$matches2 = allMatchesWithTeamsGrouped(allMatchesWithTeams($pdo));
+$teams = allTeams($pdo);
 
 function getEmptyStatsArray()
 {
