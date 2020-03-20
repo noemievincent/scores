@@ -1,0 +1,12 @@
+{
+    "name": "dominique/scores",
+    "require": {
+        "nesbot/carbon": "^2.31"
+    },
+    "authors": [
+        {
+            "name": "Dominique Vilain",
+            "email": "dominique.vilain@hepl.be"
+        }
+    ]
+}
