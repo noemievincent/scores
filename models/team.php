@@ -21,10 +21,20 @@ function find(\PDO $connection, string $id): \stdClass
 
 function findByName(\PDO $connection, string $name): \stdClass
 {
-    die($name);
     $teamRequest = 'SELECT * FROM teams WHERE name = :name';
     $pdoSt = $connection->prepare($teamRequest);
     $pdoSt->execute([':name' => $name]);
 
     return $pdoSt->fetch();
+}
+
+function save(\PDO $connection, array $team)
+{
+    try{
+        $insertTeamRequest = 'INSERT INTO teams(`name`, `slug`) VALUES (:name, :slug)';
+        $pdoSt = $connection->prepare($insertTeamRequest);
+        $pdoSt->execute([':name' => $team['name'], ':slug' => $team['slug']]);
+    }catch(\PDOException $e){
+        die($e->getMessage());
+    }
 }
