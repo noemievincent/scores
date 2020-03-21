@@ -2,7 +2,7 @@
 
 namespace Controllers\Match;
 
-use function Models\Match\save as saveMatch;
+use function Models\Match\save;
 
 require('./models/match.php');
 
@@ -22,7 +22,7 @@ function store(\PDO $pdo)
         'away-team' => $awayTeam
     ];
 
-    saveMatch($pdo, $match);
+    save($pdo, $match);
     header('Location: index.php');
     exit();
 }
