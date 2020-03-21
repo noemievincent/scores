@@ -8,17 +8,39 @@ require('./models/team.php');
 
 function store(\PDO $pdo)
 {
+    // Début de la validation
+
+    if (!isset($_POST['name'])||trim($_POST['name'])==='') {
+        $_SESSION['errors']['name'] = 'Vous devez entrer un nom pour une équipe';
+    }
+    if (!isset($_POST['slug'])||trim($_POST['slug'])==='') {
+        $_SESSION['errors']['slug'] = 'Vous devez entrer un slug pour une équipe';
+    }elseif(strlen($_POST['slug'])!=3){
+        $_SESSION['errors']['slug'] = 'Vous devez entrer un slug de 3 caractères exactement';
+
+    }
+
+    // Fin de la validation
+
     $name = $_POST['name'];
     $slug = $_POST['slug'];
     // Il manque de la validation ⚠️
+    if (!$_SESSION['errors']) {
+        save($pdo, compact('name', 'slug'));
+        header('Location: index.php');
+        exit();
+    }
 
-    save($pdo, compact('name', 'slug'));
+    $_SESSION['old']['name'] = $_POST['name'];
+    $_SESSION['old']['slug'] = $_POST['slug'];
 
-    header('Location: index.php');
+    header('Location: index.php?action=create&resource=team');
     exit();
+
 }
 
-function create(){
+function create()
+{
     $view = './views/team/create.php';
 
     return compact('view');
