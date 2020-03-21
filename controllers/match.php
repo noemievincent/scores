@@ -26,3 +26,10 @@ function store(\PDO $pdo)
     header('Location: index.php');
     exit();
 }
+
+function create(){
+    $view = './views/match/create.php';
+
+    return compact('view');
+}
+

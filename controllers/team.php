@@ -18,3 +18,8 @@ function store(\PDO $pdo)
     exit();
 }
 
+function create(){
+    $view = './views/team/create.php';
+
+    return compact('view');
+}
