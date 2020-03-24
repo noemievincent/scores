@@ -8,5 +8,10 @@
             "name": "Dominique Vilain",
             "email": "dominique.vilain@hepl.be"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": {
+            "Models\\": "models/"
+        }
+    }
 }

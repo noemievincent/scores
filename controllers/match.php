@@ -2,14 +2,12 @@
 
 namespace Controllers\Match;
 
-use function Models\Match\save;
-use function Models\Team\all;
-
-require('./models/match.php');
-require('./models/team.php');
+use Models\Match;
+use Models\Team;
 
 function store(\PDO $pdo)
 {
+    $matchModel = new Match();
     $matchDate = $_POST['match-date'];
     $homeTeam = $_POST['home-team'];
     $awayTeam = $_POST['away-team'];
@@ -24,14 +22,15 @@ function store(\PDO $pdo)
         'away-team' => $awayTeam
     ];
 
-    save($pdo, $match);
+    $matchModel->save($pdo, $match);
     header('Location: index.php');
     exit();
 }
 
 function create(\PDO $pdo): array
 {
-    $teams = all($pdo);
+    $teamModel = new Team();
+    $teams = $teamModel->all($pdo);
     $view = './views/match/create.php';
 
     return compact('view', 'teams');

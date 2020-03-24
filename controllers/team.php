@@ -2,20 +2,18 @@
 
 namespace Controllers\Team;
 
-use function Models\Team\save;
-
-require('./models/team.php');
+use Models\Team;
 
 function store(\PDO $pdo)
 {
     // Début de la validation
 
-    if (!isset($_POST['name'])||trim($_POST['name'])==='') {
+    if (!isset($_POST['name']) || trim($_POST['name']) === '') {
         $_SESSION['errors']['name'] = 'Vous devez entrer un nom pour une équipe';
     }
-    if (!isset($_POST['slug'])||trim($_POST['slug'])==='') {
+    if (!isset($_POST['slug']) || trim($_POST['slug']) === '') {
         $_SESSION['errors']['slug'] = 'Vous devez entrer un slug pour une équipe';
-    }elseif(strlen($_POST['slug'])!=3){
+    } elseif (strlen($_POST['slug']) != 3) {
         $_SESSION['errors']['slug'] = 'Vous devez entrer un slug de 3 caractères exactement';
 
     }
@@ -24,9 +22,10 @@ function store(\PDO $pdo)
 
     $name = $_POST['name'];
     $slug = $_POST['slug'];
-    // Il manque de la validation ⚠️
+
     if (!$_SESSION['errors']) {
-        save($pdo, compact('name', 'slug'));
+        $teamModel = new Team();
+        $teamModel->save($pdo, compact('name', 'slug'));
         header('Location: index.php');
         exit();
     }
