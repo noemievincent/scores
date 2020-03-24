@@ -8,9 +8,11 @@ require('./utils/dbaccess.php');
 
 $route = require('./utils/router.php');
 
-require('./controllers/'.$route['controller-file'].'.php');
+$controllerName = 'Controllers\\'.$route['controller'];
 
-$data = call_user_func($route['callback'], getConnection());
+$controller = new $controllerName();
+
+$data = call_user_func([$controller, $route['callback']], getConnection());
 
 extract($data, EXTR_OVERWRITE);
 
