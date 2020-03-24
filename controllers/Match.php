@@ -5,7 +5,7 @@ namespace Controllers;
 use Models\Team;
 
 class Match{
-    function store(\PDO $pdo)
+    function store()
     {
         $matchModel = new \Models\Match();
         $matchDate = $_POST['match-date'];
@@ -22,15 +22,15 @@ class Match{
             'away-team' => $awayTeam
         ];
 
-        $matchModel->save($pdo, $match);
+        $matchModel->save($match);
         header('Location: index.php');
         exit();
     }
 
-    function create(\PDO $pdo): array
+    function create(): array
     {
         $teamModel = new Team();
-        $teams = $teamModel->all($pdo);
+        $teams = $teamModel->all();
         $view = './views/match/create.php';
 
         return compact('view', 'teams');

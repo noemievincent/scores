@@ -4,7 +4,7 @@ namespace Controllers;
 
 class Team
 {
-    function store(\PDO $pdo)
+    function store()
     {
         // Début de la validation
 
@@ -25,7 +25,7 @@ class Team
 
         if (!$_SESSION['errors']) {
             $teamModel = new \Models\Team();
-            $teamModel->save($pdo, compact('name', 'slug'));
+            $teamModel->save(compact('name', 'slug'));
             header('Location: index.php');
             exit();
         }
