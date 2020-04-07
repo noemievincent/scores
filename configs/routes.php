@@ -18,8 +18,8 @@ return [
         'method' => 'GET',
         'action' => '',
         'resource' => '',
-        'controller' => 'Page',
-        'callback' => 'dashboard'
+        'controller' => 'Dashboard',
+        'callback' => 'index'
     ],
     [
         'method' => 'GET',
@@ -34,5 +34,33 @@ return [
         'resource' => 'match',
         'controller' => 'Match',
         'callback' => 'create'
+    ],
+    [
+        'method' => 'GET',
+        'action' => 'view',
+        'resource' => 'login-form',
+        'controller' => 'Login',
+        'callback' => 'create'
+    ],
+    [
+        'method' => 'GET',
+        'action' => 'view',
+        'resource' => 'register-form',
+        'controller' => 'Register',
+        'callback' => 'create'
+    ],
+    [
+        'method' => 'POST',
+        'action' => 'check',
+        'resource' => 'login',
+        'controller' => 'Login',
+        'callback' => 'check'
+    ],
+    [
+        'method' => 'POST',
+        'action' => 'logout',
+        'resource' => 'user',
+        'controller' => 'Login',
+        'callback' => 'delete'
     ],
 ];
