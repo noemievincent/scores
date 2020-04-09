@@ -6,6 +6,9 @@ class Team
 {
     function store()
     {
+        var_dump($_POST);
+        var_dump($_FILES);
+        die();
         // Début de la validation
 
         if (!isset($_POST['name']) || trim($_POST['name']) === '') {
