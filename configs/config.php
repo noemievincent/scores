@@ -4,6 +4,8 @@ define('TODAY',
     \Carbon\Carbon::now('Europe/Brussels')
         ->locale('fr_BE')
         ->isoFormat('dddd DD MMMM YYYY'));
+define('THUMBS', './assets/images/thumbs/');
+define('LOGO', './assets/images/full/');
 
 $data = [];
 $view = 'vue.php';

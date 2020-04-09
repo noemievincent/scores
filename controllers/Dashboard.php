@@ -24,9 +24,11 @@ class Dashboard
             $awayTeam = $match->away_team;
             if (!array_key_exists($homeTeam, $standings)) {
                 $standings[$homeTeam] = getEmptyStatsArray();
+                $standings[$homeTeam]['logo'] = $match->home_team_logo;
             }
             if (!array_key_exists($awayTeam, $standings)) {
                 $standings[$awayTeam] = getEmptyStatsArray();
+                $standings[$awayTeam]['logo'] = $match->away_team_logo;
             }
             $standings[$homeTeam]['games']++;
             $standings[$awayTeam]['games']++;
@@ -58,6 +60,7 @@ class Dashboard
             if ($a['points'] === $b['points']) {
                 return 0;
             }
+
             return $a['points'] > $b['points'] ? -1 : 1;
         });
 
