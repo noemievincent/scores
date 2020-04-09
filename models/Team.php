@@ -4,21 +4,15 @@ namespace Models;
 
 class Team extends Model
 {
+    protected $table = 'teams';
+    protected $findKey = 'id';
+
     public function all(): array
     {
         $teamsRequest = 'SELECT * FROM teams ORDER BY name';
         $pdoSt = $this->pdo->query($teamsRequest);
 
         return $pdoSt->fetchAll();
-    }
-
-    public function find(string $id): \stdClass
-    {
-        $teamRequest = 'SELECT * FROM teams WHERE id = :id';
-        $pdoSt = $this->pdo->prepare($teamRequest);
-        $pdoSt->execute([':id' => $id]);
-
-        return $pdoSt->fetch();
     }
 
     public function findByName(string $name): \stdClass
