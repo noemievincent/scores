@@ -2,6 +2,8 @@
 
 namespace Controllers;
 
+use Intervention\Image\ImageManagerStatic;
+
 class Team
 {
     function store()
@@ -54,6 +56,12 @@ class Team
             sha1_file($_FILES['logo']['tmp_name']),
             $ext
         );
+
+        ImageManagerStatic::configure(['driver' => 'imagick']);
+
+        $image = ImageManagerStatic::make($_FILES['logo']['tmp_name']);
+        die((string) $image->width());
+        die();
 
         if (!move_uploaded_file(
             $_FILES['logo']['tmp_name'], $full_file_path.$file_name)

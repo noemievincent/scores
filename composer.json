@@ -1,7 +1,8 @@
 {
     "name": "dominique/scores",
     "require": {
-        "nesbot/carbon": "^2.31"
+        "nesbot/carbon": "^2.31",
+        "intervention/image": "^2.5"
     },
     "authors": [
         {
