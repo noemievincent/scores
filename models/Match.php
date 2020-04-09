@@ -2,6 +2,8 @@
 
 namespace Models;
 
+use Carbon\Carbon;
+
 class Match extends Model
 {
     protected $table = 'matches';
@@ -30,8 +32,7 @@ class Match extends Model
         foreach ($allWithTeams as $match) {
             if (!$match->is_home) {
                 $m = new \stdClass();
-                $d = new \DateTime();
-                $d->setTimestamp(((int) $match->date) / 1000);
+                $d = Carbon::createFromFormat('Y-m-d H:i:s', $match->date);
                 $m->match_date = $d;
                 $m->away_team = $match->name;
                 $m->away_team_goals = $match->goals;
