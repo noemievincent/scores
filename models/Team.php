@@ -4,7 +4,7 @@ namespace Models;
 
 class Team extends Model
 {
-    public function all(): array
+    function all(): array
     {
         $teamsRequest = 'SELECT * FROM teams ORDER BY name';
         $pdoSt = $this->pdo->query($teamsRequest);
@@ -12,7 +12,7 @@ class Team extends Model
         return $pdoSt->fetchAll();
     }
 
-    public function find(string $id): \stdClass
+    function find(string $id): \stdClass
     {
         $teamRequest = 'SELECT * FROM teams WHERE id = :id';
         $pdoSt = $this->pdo->prepare($teamRequest);
@@ -21,7 +21,7 @@ class Team extends Model
         return $pdoSt->fetch();
     }
 
-    public function findByName(string $name): \stdClass
+    function findByName(string $name): \stdClass
     {
         $teamRequest = 'SELECT * FROM teams WHERE name = :name';
         $pdoSt = $this->pdo->prepare($teamRequest);
@@ -30,7 +30,7 @@ class Team extends Model
         return $pdoSt->fetch();
     }
 
-    public function save(array $team)
+    function save(array $team)
     {
         try {
             $insertTeamRequest = 'INSERT INTO teams(`name`, `slug`) VALUES (:name, :slug)';

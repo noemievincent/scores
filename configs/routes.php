@@ -63,11 +63,4 @@ return [
         'controller' => 'Login',
         'callback' => 'delete'
     ],
-    [
-        'method' => 'POST',
-        'action' => 'store',
-        'resource' => 'user',
-        'controller' => 'Register',
-        'callback' => 'store'
-    ],
 ];
