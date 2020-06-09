@@ -7,7 +7,7 @@
 #
 # Hôte: localhost (MySQL 5.7.26)
 # Base de données: scores
-# Temps de génération: 2020-05-02 04:37:06 +0000
+# Temps de génération: 2020-06-09 09:20:35 +0000
 # ************************************************************
 
 
@@ -45,9 +45,7 @@ CREATE TABLE `participations` (
   `team_id` int(11) unsigned NOT NULL,
   `goals` tinyint(4) NOT NULL,
   `is_home` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `participations_ibfk_1` FOREIGN KEY (`id`) REFERENCES `matches` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `participations_ibfk_2` FOREIGN KEY (`id`) REFERENCES `teams` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
@@ -77,6 +75,7 @@ CREATE TABLE `users` (
   `name` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(60) DEFAULT NULL,
+  `is_admin` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
