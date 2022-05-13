@@ -1,37 +1,38 @@
 <?php
 
-namespace Controllers;
+namespace Scores\Controllers;
 
-use Models\Team;
+use Scores\Models\Team;
+use JetBrains\PhpStorm\NoReturn;
 
-class Match{
-    function store()
+class Fixture{
+    #[NoReturn] public function store(): void
     {
-        $matchModel = new \Models\Match();
-        $matchDate = $_POST['match-date'];
+        $fixtureModel = new \Scores\Models\Fixture();
+        $fixtureDate = $_POST['fixture-date'];
         $homeTeam = $_POST['home-team'];
         $awayTeam = $_POST['away-team'];
         $homeTeamGoals = $_POST['home-team-goals'];
         $awayTeamGoals = $_POST['away-team-goals'];
 
-        $match = [
-            'date' => $matchDate,
+        $fixture = [
+            'date' => $fixtureDate,
             'home-team' => $homeTeam,
             'home-team-goals' => $homeTeamGoals,
             'away-team-goals' => $awayTeamGoals,
             'away-team' => $awayTeam
         ];
 
-        $matchModel->save($match);
+        $fixtureModel->save($fixture);
         header('Location: index.php');
         exit();
     }
 
-    function create(): array
+    public function create(): array
     {
         $teamModel = new Team();
         $teams = $teamModel->all();
-        $view = './views/match/create.php';
+        $view = './views/fixture/create.php';
 
         return compact('view', 'teams');
     }

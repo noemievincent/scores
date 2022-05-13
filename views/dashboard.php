@@ -56,7 +56,7 @@
 <?php endif; ?>
 <section>
     <h2>Matchs joués au <?= TODAY ?></h2>
-    <?php if (count($matches)): ?>
+    <?php if (count($fixtures)): ?>
         <table>
             <thead>
             <tr>
@@ -68,13 +68,13 @@
             </tr>
             </thead>
             <tbody>
-            <?php foreach ($matches as $match): ?>
+            <?php foreach ($fixtures as $fixture): ?>
                 <tr>
-                    <td><?= $match->match_date->locale('fr')->isoFormat('dddd D MMMM YYYY à H:mm') ?></td>
-                    <td><?= $match->home_team ?></td>
-                    <td><?= $match->home_team_goals ?></td>
-                    <td><?= $match->away_team_goals ?></td>
-                    <td><?= $match->away_team ?></td>
+                    <td><?= $fixture->fixture_date->locale('fr')->isoFormat('dddd D MMMM YYYY à H:mm') ?></td>
+                    <td><?= $fixture->home_team ?></td>
+                    <td><?= $fixture->home_team_goals ?></td>
+                    <td><?= $fixture->away_team_goals ?></td>
+                    <td><?= $fixture->away_team ?></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>

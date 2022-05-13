@@ -7,7 +7,7 @@ require('./configs/config.php');
 
 $route = require('./utils/router.php');
 
-$controllerName = 'Controllers\\'.$route['controller'];
+$controllerName = 'Scores\\Controllers\\'.$route['controller'];
 
 $controller = new $controllerName();
 

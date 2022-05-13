@@ -3,8 +3,8 @@ return [
     [
         'method' => 'POST',
         'action' => 'store',
-        'resource' => 'match',
-        'controller' => 'Match',
+        'resource' => 'fixture',
+        'controller' => 'Fixture',
         'callback' => 'store'
     ],
     [
@@ -31,8 +31,8 @@ return [
     [
         'method' => 'GET',
         'action' => 'create',
-        'resource' => 'match',
-        'controller' => 'Match',
+        'resource' => 'fixture',
+        'controller' => 'Fixture',
         'callback' => 'create'
     ],
     [

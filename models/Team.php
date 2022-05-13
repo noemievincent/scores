@@ -1,11 +1,11 @@
 <?php
 
-namespace Models;
+namespace Scores\Models;
 
 class Team extends Model
 {
-    protected $table = 'teams';
-    protected $findKey = 'id';
+    protected string $table = 'teams';
+    protected string $findKey = 'id';
 
     public function all(): array
     {
@@ -24,7 +24,7 @@ class Team extends Model
         return $pdoSt->fetch();
     }
 
-    public function save(array $team)
+    public function save(array $team): void
     {
         try {
             $insertTeamRequest = 'INSERT INTO teams(`name`, `slug`,`file_name`) VALUES (:name, :slug, :file_name)';

@@ -1,26 +1,28 @@
 <?php
 
 
-namespace Controllers;
+namespace Scores\Controllers;
 
+
+use JetBrains\PhpStorm\NoReturn;
 
 class Login
 {
-    public function create()
+    public function create(): array
     {
         $view = './views/login/create.php';
 
         return compact('view');
     }
 
-    public function check()
+    #[NoReturn] public function check(): void
     {
         // Collecte et validation des données de l’utilisateur envoyées avec le formulaire
         $email = $_POST['email'];
         $password = $_POST['password'];
 
         // Identification
-        $userModel = new \Models\User();
+        $userModel = new \Scores\Models\User();
         $user = $userModel->find($email);
 
         // Authentification
@@ -35,7 +37,7 @@ class Login
 
     }
 
-    public function delete()
+    #[NoReturn] public function delete(): void
     {
         // Unset all of the session variables.
         $_SESSION = array();

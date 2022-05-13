@@ -1,15 +1,17 @@
 <?php
 
 
-namespace Models;
+namespace Scores\Models;
 
+
+use JetBrains\PhpStorm\NoReturn;
 
 class User extends Model
 {
-    protected $table = 'users';
-    protected $findKey = 'email';
+    protected string $table = 'users';
+    protected string $findKey = 'email';
 
-    public function save(array $user)
+    #[NoReturn] public function save(array $user): void
     {
         try {
             $insertUserRequest = 'INSERT INTO users(`name`, `email`, `password`) VALUES (:name, :email, :password)';
@@ -17,7 +19,7 @@ class User extends Model
             $pdoSt->execute([
                 ':name' => $user['name'],
                 ':email' => $user['email'],
-                ':password' => $user['password']
+                ':password' => $user['password'],
             ]);
         } catch (\PDOException $e) {
             die($e->getMessage());

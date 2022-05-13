@@ -1,16 +1,3 @@
-# ************************************************************
-# Sequel Pro SQL dump
-# Version 4541
-#
-# http://www.sequelpro.com/
-# https://github.com/sequelpro/sequelpro
-#
-# Hôte: localhost (MySQL 5.7.26)
-# Base de données: scores
-# Temps de génération: 2020-06-09 09:20:35 +0000
-# ************************************************************
-
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -20,12 +7,12 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
-# Affichage de la table matches
+# Affichage de la table fixtures
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `matches`;
+DROP TABLE IF EXISTS `fixtures`;
 
-CREATE TABLE `matches` (
+CREATE TABLE `fixtures` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `date` datetime DEFAULT NULL,
   `slug` varchar(0) DEFAULT NULL,
@@ -41,7 +28,7 @@ DROP TABLE IF EXISTS `participations`;
 
 CREATE TABLE `participations` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `match_id` int(11) unsigned NOT NULL,
+  `fixture_id` int(11) unsigned NOT NULL,
   `team_id` int(11) unsigned NOT NULL,
   `goals` tinyint(4) NOT NULL,
   `is_home` tinyint(1) NOT NULL,

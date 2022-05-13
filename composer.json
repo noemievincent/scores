@@ -1,8 +1,10 @@
 {
     "name": "dominique/scores",
     "require": {
-        "nesbot/carbon": "^2.31",
-        "intervention/image": "^2.5"
+        "php": "^8.1",
+        "ext-pdo": "*",
+        "intervention/image": "^2.7",
+        "nesbot/carbon": "^2.58"
     },
     "authors": [
         {
@@ -12,8 +14,8 @@
     ],
     "autoload": {
         "psr-4": {
-            "Models\\": "models/",
-            "Controllers\\": "controllers/"
+            "Scores\\Models\\": "models/",
+            "Scores\\Controllers\\": "controllers/"
         }
     }
 }

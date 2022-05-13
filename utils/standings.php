@@ -1,5 +1,5 @@
 <?php
-function getEmptyStatsArray()
+function getEmptyStatsArray(): array
 {
     return [
         'logo' => '',

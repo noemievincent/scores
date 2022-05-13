@@ -1,21 +1,22 @@
 <?php
 
 
-namespace Controllers;
+namespace Scores\Controllers;
 
 
-use Models\User;
+use Scores\Models\User;
+use JetBrains\PhpStorm\NoReturn;
 
 class Register
 {
-    public function create()
+    public function create(): array
     {
         $view = './views/register/create.php';
 
         return compact('view');
     }
 
-    public function store()
+    #[NoReturn] public function store(): void
     {
         //Collecte et validation des données
         //À vous pour la validation

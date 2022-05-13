@@ -1,13 +1,13 @@
 <?php
 
-namespace Controllers;
+namespace Scores\Controllers;
 
 use Intervention\Image\Exception\NotWritableException;
 use Intervention\Image\ImageManagerStatic;
 
 class Team
 {
-    function store()
+    public function store(): void
     {
         /*var_dump($_FILES);
         die();*/
@@ -105,7 +105,7 @@ class Team
         $slug = $_POST['slug'];
 
         if (!$_SESSION['errors']) {
-            $teamModel = new \Models\Team();
+            $teamModel = new \Scores\Models\Team();
             $teamModel->save(compact('name', 'slug', 'file_name'));
             header('Location: index.php');
             exit();
@@ -119,7 +119,7 @@ class Team
 
     }
 
-    function create()
+    public function create(): array
     {
         $view = './views/team/create.php';
 
